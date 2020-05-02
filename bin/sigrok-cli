@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DOCKERIMAGE="suidroot/sigrock"
+SR_PATH="/root/sr"
+
+docker run --name sigrok-cli \
+    -v /dev/bus/usb:/dev/bus/usb \
+    --privileged \
+    --tty --interactive --network=host \
+    -v $HOME:/root \
+    $DOCKERIMAGE \
+    $SR_PATH/bin/sigrok-cli

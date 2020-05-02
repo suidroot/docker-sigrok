@@ -1,0 +1,12 @@
+#!/bin/bash
+
+DOCKERIMAGE="suidroot/sigrock"
+SR_PATH="/root/sr"
+
+docker run --name PulseView \
+    --tty --interactive --network=host \
+    --env DISPLAY=$DISPLAY \
+    --volume $XAUTH:/root/.Xauthority \
+    -v $HOME:/root \
+    $DOCKERIMAGE \
+    $SR_PATH/bin/PulseView
